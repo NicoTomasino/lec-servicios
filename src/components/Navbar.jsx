@@ -24,7 +24,7 @@ export default function Navbar() {
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-inner container">
         <a href="#inicio" className="navbar-logo">
-          <img src="/logo.png" alt="LEC Servicios" />
+          <img src="src/assets/logo.png" alt="LEC Servicios" />
           <span>LEC <strong>Servicios</strong></span>
         </a>
 
