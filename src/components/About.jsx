@@ -26,7 +26,7 @@ export default function About() {
           <p className="about-text">
             LEC Servicios es una empresa familiar con más de 10 años brindando
             soluciones en electricidad, instalación de aire acondicionado y pintura
-            en Rosario y alrededores.
+            en Junin y alrededores.
           </p>
           <p className="about-text">
             Nuestro compromiso es simple: hacer el trabajo bien, a tiempo y con materiales

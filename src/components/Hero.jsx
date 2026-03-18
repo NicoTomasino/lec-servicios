@@ -38,7 +38,7 @@ export default function Hero() {
 
         <div className="hero-stats fade-up" style={{ animationDelay: '0.4s' }}>
           <div className="stat">
-            <span className="stat-num">+500</span>
+            <span className="stat-num">+100</span>
             <span className="stat-label">Trabajos realizados</span>
           </div>
           <div className="stat-divider" />

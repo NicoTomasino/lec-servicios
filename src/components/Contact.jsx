@@ -51,7 +51,7 @@ export default function Contact() {
               <div className="cc-icon"><Clock size={22} /></div>
               <div>
                 <p className="cc-label">Horario</p>
-                <p className="cc-value">Lun–Sáb · 8:00-12:00 14:00-18:00</p>
+                <p className="cc-value">Disponibilidad Horaria Amplia</p>
               </div>
             </div>
           </div>

@@ -63,7 +63,7 @@ export default function Budget() {
             personalizado. Sin compromiso, sin costo.
           </p>
           <div className="budget-features">
-            {['Respuesta en menos de 1 hora', 'Visita técnica sin cargo', 'Presupuesto detallado por escrito'].map((f, i) => (
+            {['Respuesta las 24hs', 'Visita técnica sin cargo', 'Presupuesto detallado por escrito'].map((f, i) => (
               <div key={i} className="budget-feature">
                 <Check size={16} />
                 <span>{f}</span>
