@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <img src="/logo.png" alt="LEC Servicios" className="footer-logo" />
+          <img src="src/assets/logo.png" alt="LEC Servicios" className="footer-logo" />
           <div>
             <p className="footer-name">LEC <strong>Servicios</strong></p>
             <p className="footer-tagline">Electricidad · AC · Pintura</p>

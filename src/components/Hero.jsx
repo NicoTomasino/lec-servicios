@@ -23,7 +23,7 @@ export default function Hero() {
 
         <p className="hero-sub fade-up" style={{ animationDelay: '0.2s' }}>
           Más de 10 años de experiencia brindando servicios
-          de calidad en Rosario y zona. Trabajo garantizado,
+          de calidad en Junin y zona. Trabajo garantizado,
           presupuesto sin cargo.
         </p>
 
