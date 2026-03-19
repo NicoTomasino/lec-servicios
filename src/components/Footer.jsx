@@ -33,7 +33,7 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <div className="container">
-          <p>© {new Date().getFullYear()} LEC Servicios · Rosario, Argentina</p>
+          <p>© {new Date().getFullYear()} LEC Servicios · Junin, Buenos Aires ,Argentina</p>
         </div>
       </div>
 

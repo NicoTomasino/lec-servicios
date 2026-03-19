@@ -49,9 +49,6 @@ export default function Gallery() {
           ))}
         </div>
 
-        <p className="gallery-note">
-          * Estas son fotos de referencia. Reemplazalas con fotos reales de tus trabajos.
-        </p>
       </div>
 
       {lightbox && (
