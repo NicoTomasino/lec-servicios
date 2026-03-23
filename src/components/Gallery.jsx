@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import { X } from 'lucide-react'
 import './Gallery.css'
+import fotoElectricidad from '../assets/electricidad.jpg'
+import fotoElectricidad2 from '../assets/electricidad2.jpg'
+import fotoAC from '../assets/limpiezaymantenimientoaire.jpg'
 
 const photos = [
-  { src: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80', label: 'Instalación eléctrica', cat: 'electricidad' },
-  { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80', label: 'Tablero eléctrico', cat: 'electricidad' },
-  { src: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80', label: 'Instalación de split', cat: 'ac' },
+  { src: fotoElectricidad, label: 'Instalación eléctrica', cat: 'electricidad' },
+  { src: fotoElectricidad2, label: 'Instalación eléctrica 2', cat: 'electricidad' },
+  { src: fotoAC, label: 'Limpieza y mantenimiento', cat: 'ac' },
   { src: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&q=80', label: 'Pintura interior', cat: 'pintura' },
   { src: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80', label: 'Pintura exterior', cat: 'pintura' },
   { src: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80', label: 'Trabajo terminado', cat: 'electricidad' },
