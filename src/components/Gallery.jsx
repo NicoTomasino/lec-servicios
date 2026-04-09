@@ -1,18 +1,25 @@
 import { useState } from 'react'
 import { X } from 'lucide-react'
 import './Gallery.css'
-import fotoElectricidad from '../assets/electricidad.jpg'
-import fotoElectricidad2 from '../assets/electricidad2.jpg'
-import fotoAC from '../assets/limpiezaymantenimientoaire.jpg'
 
-const photos = [
-  { src: fotoElectricidad, label: 'Instalación eléctrica', cat: 'electricidad' },
-  { src: fotoElectricidad2, label: 'Instalación eléctrica 2', cat: 'electricidad' },
-  { src: fotoAC, label: 'Limpieza y mantenimiento', cat: 'ac' },
-  { src: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&q=80', label: 'Pintura interior', cat: 'pintura' },
-  { src: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80', label: 'Pintura exterior', cat: 'pintura' },
-  { src: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80', label: 'Trabajo terminado', cat: 'electricidad' },
-]
+const archivos = import.meta.glob('../assets/galeria/*', { eager: true })
+
+const photos = Object.entries(archivos).map(([ruta, modulo]) => {
+  const nombre = ruta.split('/').pop()
+  const cat = nombre.startsWith('elec') ? 'electricidad'
+            : nombre.startsWith('ac') ? 'ac'
+            : nombre.startsWith('pin') ? 'pintura'
+            : 'todos'
+  const label = nombre
+    .replace(/\.[^.]+$/, '')
+    .replace(/^(elec|ac|pin)-/, '')
+    .replace(/-/g, ' ')
+  return {
+    src: modulo.default,
+    label,
+    cat
+  }
+})
 
 const cats = ['todos', 'electricidad', 'ac', 'pintura']
 const catLabels = { todos: 'Todos', electricidad: 'Electricidad', ac: 'Aire Acond.', pintura: 'Pintura' }
@@ -51,7 +58,6 @@ export default function Gallery() {
             </div>
           ))}
         </div>
-
       </div>
 
       {lightbox && (

@@ -46,7 +46,7 @@ export default function Budget() {
       `Nombre: ${contact.nombre}\n` +
       `Teléfono: ${contact.telefono}`
     )
-    window.open(`https://wa.me/5491100000000?text=${msg}`, '_blank')
+    window.open(`https://wa.me/5492364694855?text=${msg}`, '_blank')
     setSent(true)
   }
 

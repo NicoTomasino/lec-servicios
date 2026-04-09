@@ -66,27 +66,61 @@
 .footer-bottom p { font-size: 0.8rem; color: var(--gray); }
 
 /* Floating WhatsApp button */
-.wa-float {
+.wa-float-wrapper {
   position: fixed;
   bottom: 28px;
   right: 28px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.wa-float {
   width: 56px;
   height: 56px;
-  background: #25D366;
-  color: #fff;
+  background: var(--orange);
+  color: var(--black);
+  border: none;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-  z-index: 90;
+  box-shadow: 0 4px 20px rgba(247, 148, 29, 0.4);
+  cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
-  text-decoration: none;
 }
 .wa-float:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.55);
+  box-shadow: 0 6px 28px rgba(247, 148, 29, 0.55);
 }
+
+.wa-float-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: fadeUp 0.2s ease;
+}
+
+.wa-float-item {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+.wa-float-item:hover { transform: scale(1.1); }
+
+.wa-item { background: #25D366; }
+.ig-item { background: #E1306C; }
+.fb-item { background: #1877F2; }
 
 @media (max-width: 768px) {
   .footer-inner { flex-direction: column; align-items: flex-start; }

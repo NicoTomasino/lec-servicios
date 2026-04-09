@@ -54,8 +54,10 @@
 
 .service-card--accent {
   background: var(--orange);
-  border-color: var(--orange);
+  border-color: var(--black);
+  border-width: 2px;
 }
+
 .service-card--accent::after { background: var(--orange-dark); }
 .service-card--accent .service-icon,
 .service-card--accent .service-title,
@@ -97,4 +99,15 @@
 
 @media (max-width: 900px) {
   .services-grid { grid-template-columns: 1fr; }
+}
+
+.service-card--accent .btn-primary {
+  color: var(--black);
+  border: 2px solid transparent;
+  clip-path: none;
+  transition: border-color 0.2s;
+}
+
+.service-card--accent .btn-primary:hover {
+  border: 2px solid var(--black);
 }

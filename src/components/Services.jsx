@@ -12,8 +12,8 @@ const services = [
   {
     icon: <Wind size={32} />,
     title: 'Aire Acondicionado',
-    desc: 'Instalación, mantenimiento y reparación de equipos de aire acondicionado split, multi-split y ductos.',
-    items: ['Instalación de splits', 'Servicio técnico', 'Carga de gas', 'Multi-split y ductos'],
+    desc: 'Instalación, mantenimiento y reparación de equipos de aire acondicionado.',
+    items: ['Instalación de splits', 'Servicio técnico'],
     accent: false,
   },
   {
