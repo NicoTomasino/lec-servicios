@@ -1,8 +1,12 @@
 import { Phone, Mail, MapPin, MessageCircle, Clock } from 'lucide-react'
+import { useTextos } from '../lib/useTextos'
+import { waLink } from '../lib/wa'
 import './Contact.css'
 
 export default function Contact() {
-  const waLink = 'https://wa.me/5492364694855?text=Hola!%20Quiero%20hacer%20una%20consulta.'
+  const { textos } = useTextos()
+  const wa = waLink(textos.contacto_telefono)
+  const telHref = `tel:+${(textos.contacto_telefono || '').replace(/\D/g, '')}`
 
   return (
     <section id="contacto" className="contact-section">
@@ -14,36 +18,36 @@ export default function Contact() {
 
         <div className="contact-grid">
           <div className="contact-cards">
-            <a href={waLink} target="_blank" rel="noreferrer" className="contact-card contact-card--main">
+            <a href={wa} target="_blank" rel="noreferrer" className="contact-card contact-card--main">
               <div className="cc-icon"><MessageCircle size={28} /></div>
               <div>
                 <p className="cc-label">WhatsApp</p>
-                <p className="cc-value">+54 9 236 469-4855 </p>
+                <p className="cc-value">{textos.contacto_telefono}</p>
                 <p className="cc-sub">Respuesta rápida</p>
               </div>
             </a>
 
-            <div className="contact-card">
+            <a href={telHref} className="contact-card">
               <div className="cc-icon"><Phone size={22} /></div>
               <div>
                 <p className="cc-label">Teléfono</p>
-                <p className="cc-value">+54 9 236 469-4855</p>
+                <p className="cc-value">{textos.contacto_telefono}</p>
               </div>
-            </div>
+            </a>
 
-            <div className="contact-card">
+            <a href={`mailto:${textos.contacto_email}`} className="contact-card">
               <div className="cc-icon"><Mail size={22} /></div>
               <div>
                 <p className="cc-label">Email</p>
-                <p className="cc-value">lecservicios@email.com</p>
+                <p className="cc-value">{textos.contacto_email}</p>
               </div>
-            </div>
+            </a>
 
             <div className="contact-card">
               <div className="cc-icon"><MapPin size={22} /></div>
               <div>
                 <p className="cc-label">Zona de trabajo</p>
-                <p className="cc-value">Junin y alrededores</p>
+                <p className="cc-value">{textos.contacto_zona}</p>
               </div>
             </div>
 
@@ -51,7 +55,7 @@ export default function Contact() {
               <div className="cc-icon"><Clock size={22} /></div>
               <div>
                 <p className="cc-label">Horario</p>
-                <p className="cc-value">Disponibilidad Horaria Amplia</p>
+                <p className="cc-value">{textos.contacto_horario}</p>
               </div>
             </div>
           </div>
@@ -62,7 +66,7 @@ export default function Contact() {
               Escribinos ahora por WhatsApp y te respondemos en minutos.
               Presupuesto sin cargo, sin compromiso.
             </p>
-            <a href={waLink} target="_blank" rel="noreferrer" className="btn-primary cta-btn">
+            <a href={wa} target="_blank" rel="noreferrer" className="btn-primary cta-btn">
               <MessageCircle size={20} />
               Escribir por WhatsApp
             </a>

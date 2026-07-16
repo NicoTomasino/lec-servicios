@@ -1,4 +1,5 @@
 import { ShieldCheck, Clock, ThumbsUp, Users } from 'lucide-react'
+import { useTextos } from '../lib/useTextos'
 import './About.css'
 
 const values = [
@@ -9,6 +10,8 @@ const values = [
 ]
 
 export default function About() {
+  const { textos } = useTextos()
+
   return (
     <section id="nosotros" className="about-section">
       <div className="container about-inner">
@@ -23,15 +26,9 @@ export default function About() {
         <div className="about-content">
           <p className="section-label">Quiénes somos</p>
           <h2 className="section-title">Experiencia que <span>se nota</span></h2>
-          <p className="about-text">
-            LEC Servicios es una empresa familiar con más de 10 años brindando
-            soluciones en electricidad, instalación de aire acondicionado y pintura
-            en Junin y alrededores.
-          </p>
-          <p className="about-text">
-            Nuestro compromiso es simple: hacer el trabajo bien, a tiempo y con materiales
-            de calidad. Sin sorpresas en el presupuesto, sin vueltas.
-          </p>
+
+          <p className="about-text">{textos.about_parrafo1}</p>
+          <p className="about-text">{textos.about_parrafo2}</p>
 
           <div className="values-grid">
             {values.map((v, i) => (

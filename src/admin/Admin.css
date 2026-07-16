@@ -1,0 +1,297 @@
+@import '../App.css';
+
+/* ===== LOGIN ===== */
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--black);
+  padding: 24px;
+  color: var(--white);
+  font-family: var(--font-body);
+}
+
+.login-box {
+  background: var(--dark2);
+  border: 1px solid var(--dark3);
+  border-top: 3px solid var(--orange);
+  padding: 40px 32px;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.login-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1;
+}
+.login-title span { color: var(--orange); }
+
+.login-sub {
+  color: var(--gray);
+  font-size: 0.875rem;
+  margin-bottom: 10px;
+}
+
+.login-box input,
+.foto-input,
+.foto-select,
+.texto-row input,
+.texto-row textarea {
+  background: var(--dark3);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 11px 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+.login-box input:focus,
+.foto-input:focus,
+.foto-select:focus,
+.texto-row input:focus,
+.texto-row textarea:focus { border-color: var(--orange); }
+
+.login-error {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+}
+
+.login-box .btn-primary {
+  justify-content: center;
+  margin-top: 6px;
+}
+.login-box .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ===== ADMIN LAYOUT ===== */
+.admin {
+  min-height: 100vh;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+}
+
+.admin-header {
+  background: var(--dark2);
+  border-bottom: 1px solid var(--dark3);
+  padding: 16px 0;
+}
+.admin-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.admin-logo {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.admin-logo span { color: var(--orange); }
+
+.admin-user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+.btn-logout {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid var(--dark3);
+  color: var(--light-gray);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-logout:hover { border-color: var(--orange); color: var(--orange); }
+
+/* ===== TABS ===== */
+.admin-tabs {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 24px 0;
+  display: flex;
+  gap: 8px;
+}
+.admin-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: 1px solid var(--dark3);
+  border-bottom: none;
+  color: var(--gray);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.admin-tabs button:hover { color: var(--orange); }
+.admin-tabs button.active {
+  background: var(--dark2);
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.admin-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+/* ===== PANEL ===== */
+.panel {
+  background: var(--dark2);
+  border: 1px solid var(--dark3);
+  padding: 28px;
+}
+
+.panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--dark3);
+}
+.panel-head h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.panel-sub {
+  color: var(--gray);
+  font-size: 0.82rem;
+  margin-top: 3px;
+}
+
+.panel-msg {
+  background: rgba(247,148,29,0.1);
+  border-left: 2px solid var(--orange);
+  color: var(--orange);
+  font-size: 0.85rem;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+}
+
+.upload-btn { cursor: pointer; }
+.panel .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ===== LISTA DE FOTOS ===== */
+.foto-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.foto-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 170px auto;
+  align-items: center;
+  gap: 12px;
+  background: var(--dark);
+  border: 1px solid var(--dark3);
+  padding: 10px;
+  transition: border-color 0.2s;
+}
+.foto-row:hover { border-color: rgba(247,148,29,0.3); }
+
+.foto-thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  background: var(--dark3);
+}
+
+.foto-actions {
+  display: flex;
+  gap: 4px;
+}
+.foto-actions button {
+  background: transparent;
+  border: 1px solid var(--dark3);
+  color: var(--light-gray);
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  transition: all 0.15s;
+}
+.foto-actions button:hover:not(:disabled) {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+.foto-actions button:disabled { opacity: 0.25; cursor: not-allowed; }
+.foto-actions .btn-del:hover { border-color: #ff6b6b; color: #ff6b6b; }
+
+/* ===== LISTA DE TEXTOS ===== */
+.texto-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.texto-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.texto-row label {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--orange);
+}
+.texto-row textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 720px) {
+  .foto-row {
+    grid-template-columns: 50px 1fr;
+    grid-template-areas:
+      "thumb input"
+      "select select"
+      "actions actions";
+  }
+  .foto-thumb  { grid-area: thumb; width: 50px; height: 50px; }
+  .foto-input  { grid-area: input; }
+  .foto-select { grid-area: select; }
+  .foto-actions { grid-area: actions; justify-content: flex-end; }
+  .panel { padding: 18px; }
+  .admin-tabs { padding: 16px 16px 0; }
+  .admin-main { padding: 0 16px 40px; }
+}
+

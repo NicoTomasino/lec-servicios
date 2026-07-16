@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { MessageSquare, ChevronRight, Check, Send } from 'lucide-react'
+import { useTextos } from '../lib/useTextos'
+import { waLink } from '../lib/wa'
 import './Budget.css'
 
 const STEPS = [
@@ -25,32 +27,36 @@ export default function Budget() {
   const [answers, setAnswers] = useState({})
   const [contact, setContact] = useState({ nombre: '', telefono: '' })
   const [sent, setSent] = useState(false)
+  const { textos } = useTextos()
 
   const current = STEPS[step]
   const isContactStep = step === STEPS.length
   const isDone = sent
 
   const choose = (option) => {
-    const updated = { ...answers, [current.id]: option }
-    setAnswers(updated)
+    setAnswers({ ...answers, [current.id]: option })
     setStep(s => s + 1)
   }
 
   const handleSend = (e) => {
     e.preventDefault()
-    const msg = encodeURIComponent(
+    const msg =
       `Hola! Quiero un presupuesto.\n\n` +
       `Servicio: ${answers.servicio}\n` +
       `Tipo: ${answers.tipo}\n` +
       `Urgencia: ${answers.urgencia}\n` +
       `Nombre: ${contact.nombre}\n` +
       `Teléfono: ${contact.telefono}`
-    )
-    window.open(`https://wa.me/5492364694855?text=${msg}`, '_blank')
+    window.open(waLink(textos.contacto_telefono, msg), '_blank')
     setSent(true)
   }
 
-  const reset = () => { setStep(0); setAnswers({}); setContact({ nombre: '', telefono: '' }); setSent(false) }
+  const reset = () => {
+    setStep(0)
+    setAnswers({})
+    setContact({ nombre: '', telefono: '' })
+    setSent(false)
+  }
 
   return (
     <section id="presupuesto" className="budget-section">
@@ -63,7 +69,7 @@ export default function Budget() {
             personalizado. Sin compromiso, sin costo.
           </p>
           <div className="budget-features">
-            {['Respuesta las 24hs', 'Visita técnica sin cargo', 'Presupuesto detallado por escrito'].map((f, i) => (
+            {['Respuesta en menos de 1 hora', 'Visita técnica sin cargo', 'Presupuesto detallado por escrito'].map((f, i) => (
               <div key={i} className="budget-feature">
                 <Check size={16} />
                 <span>{f}</span>
@@ -84,8 +90,7 @@ export default function Budget() {
           </div>
 
           <div className="bot-chat">
-            {/* Answered steps */}
-            {Object.entries(answers).map(([id, val], i) => {
+            {Object.entries(answers).map(([id, val]) => {
               const s = STEPS.find(s => s.id === id)
               return (
                 <div key={id} className="chat-row">
@@ -95,7 +100,6 @@ export default function Budget() {
               )
             })}
 
-            {/* Current step */}
             {!isDone && !isContactStep && (
               <div className="chat-row">
                 <div className="chat-bubble bot-bubble">{current.question}</div>
@@ -109,7 +113,6 @@ export default function Budget() {
               </div>
             )}
 
-            {/* Contact step */}
             {isContactStep && !isDone && (
               <div className="chat-row">
                 <div className="chat-bubble bot-bubble">Perfecto! ¿Cómo te llamás y cuál es tu número?</div>
@@ -135,7 +138,6 @@ export default function Budget() {
               </div>
             )}
 
-            {/* Done */}
             {isDone && (
               <div className="chat-row">
                 <div className="chat-bubble bot-bubble">

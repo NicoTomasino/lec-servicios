@@ -1,7 +1,19 @@
 import { ArrowRight, Zap } from 'lucide-react'
+import { useTextos } from '../lib/useTextos'
 import './Hero.css'
 
+// "Soluciones para *tu hogar* y empresa" → pinta naranja lo que está entre *
+function resaltar(texto) {
+  return texto.split(/(\*[^*]+\*)/g).map((parte, i) =>
+    parte.startsWith('*') && parte.endsWith('*')
+      ? <span key={i}>{parte.slice(1, -1)}</span>
+      : parte
+  )
+}
+
 export default function Hero() {
+  const { textos } = useTextos()
+
   return (
     <section className="hero" id="inicio">
       <div className="hero-bg">
@@ -16,15 +28,11 @@ export default function Hero() {
         </div>
 
         <h1 className="hero-title fade-up" style={{ animationDelay: '0.1s' }}>
-          Soluciones para<br />
-          <span>tu hogar</span> y<br />
-          empresa
+          {resaltar(textos.hero_titulo)}
         </h1>
 
         <p className="hero-sub fade-up" style={{ animationDelay: '0.2s' }}>
-          Más de 10 años de experiencia brindando servicios
-          de calidad en Junin y zona. Trabajo garantizado,
-          presupuesto sin cargo.
+          {textos.hero_subtitulo}
         </p>
 
         <div className="hero-actions fade-up" style={{ animationDelay: '0.3s' }}>

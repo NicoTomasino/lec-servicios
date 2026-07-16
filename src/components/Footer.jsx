@@ -1,15 +1,19 @@
 import { useState } from 'react'
 import { MessageCircle, Instagram, Facebook, Share2, X } from 'lucide-react'
+import { useTextos } from '../lib/useTextos'
+import { waLink } from '../lib/wa'
 import './Footer.css'
 
 export default function Footer() {
   const [open, setOpen] = useState(false)
+  const { textos } = useTextos()
+  const wa = waLink(textos.contacto_telefono)
 
   return (
     <footer className="footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <img src="src/assets/logo.png" alt="LEC Servicios" className="footer-logo" />
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="LEC Servicios" className="footer-logo" />
           <div>
             <p className="footer-name">LEC <strong>Servicios</strong></p>
             <p className="footer-tagline">Electricidad · AC · Pintura</p>
@@ -23,7 +27,7 @@ export default function Footer() {
           })}
         </nav>
 
-        <a href="https://wa.me/5492364694855" target="_blank" rel="noreferrer" className="footer-wa">
+        <a href={wa} target="_blank" rel="noreferrer" className="footer-wa">
           <MessageCircle size={18} />
           WhatsApp
         </a>
@@ -31,14 +35,14 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <div className="container">
-          <p>© {new Date().getFullYear()} LEC Servicios · Junin, Buenos Aires, Argentina</p>
+          <p>© {new Date().getFullYear()} LEC Servicios · Junín, Buenos Aires, Argentina</p>
         </div>
       </div>
 
       <div className="wa-float-wrapper">
         {open && (
           <div className="wa-float-menu">
-            <a href="https://wa.me/5492364694855?text=Hola!%20Quiero%20hacer%20una%20consulta." target="_blank" rel="noreferrer" className="wa-float-item wa-item" aria-label="WhatsApp">
+            <a href={wa} target="_blank" rel="noreferrer" className="wa-float-item wa-item" aria-label="WhatsApp">
               <MessageCircle size={20} />
             </a>
             <a href="https://www.instagram.com/lec.servicios/" target="_blank" rel="noreferrer" className="wa-float-item ig-item" aria-label="Instagram">
@@ -53,7 +57,6 @@ export default function Footer() {
           {open ? <X size={26} /> : <Share2 size={26} />}
         </button>
       </div>
-
     </footer>
   )
 }

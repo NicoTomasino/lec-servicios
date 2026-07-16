@@ -1,34 +1,25 @@
 import { useState } from 'react'
 import { X } from 'lucide-react'
+import { useFotos } from '../lib/useFotos'
 import './Gallery.css'
 
-const archivos = import.meta.glob('../assets/galeria/*', { eager: true })
-
-const photos = Object.entries(archivos).map(([ruta, modulo]) => {
-  const nombre = ruta.split('/').pop()
-  const cat = nombre.startsWith('elec') ? 'electricidad'
-            : nombre.startsWith('ac') ? 'ac'
-            : nombre.startsWith('pin') ? 'pintura'
-            : 'todos'
-  const label = nombre
-    .replace(/\.[^.]+$/, '')
-    .replace(/^(elec|ac|pin)-/, '')
-    .replace(/-/g, ' ')
-  return {
-    src: modulo.default,
-    label,
-    cat
-  }
-})
-
-const cats = ['todos', 'electricidad', 'ac', 'pintura']
-const catLabels = { todos: 'Todos', electricidad: 'Electricidad', ac: 'Aire Acond.', pintura: 'Pintura' }
+const cats = ['todos', 'electricidad', 'ac', 'pintura', 'otros']
+const catLabels = {
+  todos: 'Todos',
+  electricidad: 'Electricidad',
+  ac: 'Aire Acond.',
+  pintura: 'Pintura',
+  otros: 'Otros',
+}
 
 export default function Gallery() {
+  const { fotos, loading } = useFotos()
   const [active, setActive] = useState('todos')
   const [lightbox, setLightbox] = useState(null)
 
-  const filtered = active === 'todos' ? photos : photos.filter(p => p.cat === active)
+  const filtered = active === 'todos'
+    ? fotos
+    : fotos.filter(p => p.categoria === active)
 
   return (
     <section id="galeria" className="gallery-section">
@@ -48,23 +39,29 @@ export default function Gallery() {
           ))}
         </div>
 
-        <div className="gallery-grid">
-          {filtered.map((p, i) => (
-            <div key={i} className="gallery-item" onClick={() => setLightbox(p)}>
-              <img src={p.src} alt={p.label} loading="lazy" />
-              <div className="gallery-overlay">
-                <span>{p.label}</span>
+        {loading ? (
+          <p style={{ color: 'var(--gray)', padding: '40px 0' }}>Cargando galería...</p>
+        ) : filtered.length === 0 ? (
+          <p style={{ color: 'var(--gray)', padding: '40px 0' }}>No hay fotos en esta categoría.</p>
+        ) : (
+          <div className="gallery-grid">
+            {filtered.map(p => (
+              <div key={p.id} className="gallery-item" onClick={() => setLightbox(p)}>
+                <img src={p.url} alt={p.titulo} loading="lazy" />
+                <div className="gallery-overlay">
+                  <span>{p.titulo}</span>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {lightbox && (
         <div className="lightbox" onClick={() => setLightbox(null)}>
           <button className="lightbox-close"><X size={24} /></button>
-          <img src={lightbox.src} alt={lightbox.label} />
-          <p>{lightbox.label}</p>
+          <img src={lightbox.url} alt={lightbox.titulo} />
+          <p>{lightbox.titulo}</p>
         </div>
       )}
     </section>
