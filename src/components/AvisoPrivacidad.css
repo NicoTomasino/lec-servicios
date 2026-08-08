@@ -1,0 +1,102 @@
+@import '../App.css';
+
+.aviso-privacidad {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: var(--dark2);
+  border-top: 2px solid var(--orange);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.4);
+  animation: avisoSubir 0.4s ease;
+}
+
+@keyframes avisoSubir {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.aviso-texto {
+  flex: 1;
+  min-width: 260px;
+}
+.aviso-texto strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--orange);
+  margin-bottom: 4px;
+}
+.aviso-texto p {
+  font-size: 0.85rem;
+  color: var(--light-gray);
+  line-height: 1.5;
+  margin: 0;
+}
+.aviso-texto a {
+  color: var(--orange);
+  text-decoration: underline;
+}
+
+.aviso-acciones {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.aviso-rechazar,
+.aviso-aceptar {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 10px 22px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.aviso-rechazar {
+  background: transparent;
+  border: 1px solid var(--dark3);
+  color: var(--light-gray);
+}
+.aviso-rechazar:hover {
+  border-color: var(--light-gray);
+  color: var(--white);
+}
+
+.aviso-aceptar {
+  background: var(--orange);
+  color: var(--black);
+}
+.aviso-aceptar:hover {
+  background: var(--orange-light);
+}
+
+@media (max-width: 600px) {
+  .aviso-privacidad {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+  }
+  .aviso-acciones {
+    justify-content: stretch;
+  }
+  .aviso-rechazar,
+  .aviso-aceptar {
+    flex: 1;
+    text-align: center;
+  }
+}

@@ -6,6 +6,7 @@ import Gallery from './components/Gallery'
 import Budget from './components/Budget'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import AvisoPrivacidad from './components/AvisoPrivacidad'
 import './App.css'
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
       <Budget />
       <Contact />
       <Footer />
+      <AvisoPrivacidad />
     </div>
   )
 }
